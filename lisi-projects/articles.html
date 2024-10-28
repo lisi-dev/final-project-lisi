@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: black;
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .kryesori {
+            max-width: 1200px;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        .header {
+            width: 100%;
+        }
+
+        nav {
+            /*background-color: white;*/
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        nav li {
+            height: 80px;
+        }
+
+        nav a {
+            height: 100%;
+            padding: 0 30px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            font-weight: bold;
+            color: white;
+        }
+
+        nav a:hover {
+            font-weight: bolder;
+            opacity: 0.5;
+        }
+
+        .sidebar {
+            position: fixed;
+            height: 100vh;
+            width: 100%;
+            z-index: 999;
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            display: none;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+        }
+
+        hr {
+            width: 80%;
+            margin: 20px auto;
+        }
+
+        footer {
+            margin-top: 40px;
+        }
+
+        .footerContainer {
+            width: 100%;
+            max-width: 1050px;
+            margin: auto;
+            background-color: rgb(0, 0, 0);
+            padding: 30px;
+            color: white;
+        }
+
+        .socialIcons {
+            display: flex;
+            justify-content: center;
+        }
+
+        .socialIcons a {
+            padding: 10px;
+            background-color: white;
+            margin: 10px;
+            border-radius: 50%;
+        }
+
+        .socialIcons a i {
+            font-size: 2em;
+            color: black;
+        }
+
+        .socialIcons a:hover {
+            background-color: #111;
+            transition: 0.5s;
+        }
+
+        .footerNav ul {
+            display: flex;
+            justify-content: center;
+            list-style-type: none;
+            flex-wrap: wrap;
+            margin: 30px 0;
+        }
+
+        .footerNav ul li a {
+            color: white;
+            margin: 20px;
+            text-decoration: none;
+            font-size: 1.3em;
+            opacity: 0.7;
+            transition: 0.5s;
+        }
+
+        .footerNav ul li a:hover {
+            opacity: 1;
+        }
+
+        .menu-button {
+            display: none;
+        }
+
+        .h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            text-align: end;
+            color: white;
+            opacity: 1;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .margin {
+            width: 100%;
+            margin-bottom: 50px;
+        }
+
+        .main-article p {
+            color: white;
+            width: 70%;
+            padding-left: 40px;
+            font-size: large;
+            font-weight: bolder;
+            color: black;
+        }
+
+        .main-article {
+            margin: auto;
+            width: 80%;
+            height: 400px;
+            background: url(pexels-cottonbro-6153354.jpg);
+            background-position: center;
+            background-size: cover;
+            opacity: 0.9;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+        }
+
+        .main-article:hover {
+            transition: 0.4s ease-in-out;
+            opacity: 0.5;
+        }
+
+        .articles {
+            /* Additional styling can go here */
+        }
+
+        .a-article {
+            width: 80%;
+            margin: auto;
+        }
+
+        .articles div {
+            width: 30%;
+            background-color: white;
+            height: 300px;
+        }
+
+        .articles h1 {
+            color: black;
+            font-size: 15px;
+            font-weight: 400;
+            text-align: start;
+        }
+
+        .article-1 {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .article-1 img {
+            width: 100%;
+            height: auto;
+        }
+
+        .article-madh {
+            display: flex;
+            width: 80%;
+            height: 400px;
+            margin: auto;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .article-madh div {
+            width: 30%;
+            height: 200px;
+        }
+
+        .blogu-madh, .blogu-madh2 {
+            width: 82%;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-top: 50px;
+            color: white;
+        }
+
+        /* Flexbox styling */
+        .blogu-madh div, .blogu-madh2 div, .blogu-madh3 div {
+            width: 100%;
+            max-width: 400px;
+            margin: 10px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        .blogu-madh p, .blogu-madh2 p, .blogu-madh3 p {
+            margin-top: auto;
+            min-height: 80px; /* Adjust height as needed */
+            color: white;
+        }
+
+        .blogu-madh img, .blogu-madh2 img, .blogu-madh3 img {
+            width: 100%;
+            height: 250px; /* Set a fixed height */
+            object-fit: cover;
+            transition: 0.3s ease;
+        }
+
+        .blogu-madh img:hover, .blogu-madh2 img:hover, .blogu-madh3 img:hover {
+            transform: translateY(-5px);
+            border: 1px solid blue;
+            border-radius: 15px;
+        }
+
+        .blogu-madh a:hover, .blogu-madh2 a:hover, .blogu-madh3 a:hover {
+            color: red;
+        }
+
+        .blogu-5, .blogu-6 {
+            position: relative;
+            background-size: cover;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .blogu-5 {
+            background: url('path-to-your-background-image.jpg') no-repeat center center;
+        }
+
+        .blogu-5 p, .blogu-6 p {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            color: white;
+            font-size: 1.2em;
+            transition: 0.3s ease;
+            z-index: 10;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        .blogu-madh a, .blogu-madh2 a {
+            margin-top: 10px;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+        }
+
+        .blogu-madh3 a {
+            text-decoration: none;
+            color: beige;
+            font-weight: bold;
+        }
+
+        .blogu-5:hover p, .blogu-6:hover p {
+            color: red;
+        }
+        nav a:hover {
+            font-weight: bolder;
+            opacity: 0.5;
+            transition: 0.4s;
+        }
+        nav a:not(:hover){
+            transition: 0.4s;
+            opacity: 1;
+        }
+        .sidebar {
+                display: none;
+                flex-direction: column;
+                align-items: center;
+                background-color: black;
+                font-size: 30px;
+                color: black;
+        }
+        @media(max-width: 800px) {
+            .menu-button {
+                display: inline; 
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .h1 {
+                font-size: 2rem;
+            }
+
+            .main-article p {
+                font-size: smaller;
+            }
+
+            .articles div {
+                height: auto;
+            }
+
+            .articles h1 {
+                font-size: 1rem;
+            }
+
+            .hideOnMobile {
+                display: none;
+            }
+        }
+
+        @media(max-width: 400px) {
+            .sidebar {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="kryesori">
+        <header class="header">
+            <nav>
+                <ul class="sidebar">
+                    <li onclick="hideSidebar()">
+                        <a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></a>
+                    </li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="articles.html">Articles</a></li>
+                    <li><a href="aboutus.html">About Us</a></li>
+                    <li><a href="contactus.html">Contact Us</a></li>
+                </ul>
+                <ul class="headi1">
+                    <li id="img-ja"><a href="index.html"><img src="logo-lesspx.png" alt="" width="85px"></a></li>
+                    <li class="hideOnMobile"><a href="index.html">Home</a></li>
+                    <li class="hideOnMobile"><a href="articles.html">Articles</a></li>
+                    <li class="hideOnMobile"><a href="aboutus.html">About Us</a></li>
+                    <li class="hideOnMobile"><a href="contactus.html">Contact Us</a></li>
+                    <li class="menu-button" onclick="showSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg></a></li>
+                </ul>
+            </nav>
+        </header>
+        <div class="margin"></div>
+        <a href="https://indianexpress.com/article/technology/tech-news-technology/us-curb-ai-investment-china-soon-9632305/" class="a-article" target="_blank">
+            <div class="main-article">
+                <h1 class="h1">US to curb AI investment in China soon.</h1>
+                <p>The rules, which will also require US investors to notify the Treasury Department about some investments in AI and other sensitive technologies, stem from an executive order signed by President Joe Biden.</p>
+            </div>
+        </a>
+        
+        <div class="blogu-madh">
+            <div class="blogu-1">
+                <a href="https://indianexpress.com/article/technology/gaming/call-of-duty-black-ops-6-story-multiplayer-zombie-india-launch-price-9638232/" target="_blank"><img src="Call-of-Duty-Black-Ops-6.jpg" alt=""></a>
+                <p><a href="https://indianexpress.com/article/technology/gaming/call-of-duty-black-ops-6-story-multiplayer-zombie-india-launch-price-9638232/" target="_blank">Call of Duty: Black Ops 6 is now available worldwide except Kuwait, where the game is currently banned due to reasons unknown.</a></p>
+            </div>
+            <div class="blogu-2">
+                <a href="https://indianexpress.com/article/technology/artificial-intelligence/how-intel-got-left-behind-in-the-ai-chip-boom-9637795/lite/" target="_blank"><img src="intel-12th-gen-core-1-.jpg" alt=""></a>
+                <p><a href="https://indianexpress.com/article/technology/artificial-intelligence/how-intel-got-left-behind-in-the-ai-chip-boom-9637795/lite/" target="_blank">How Intel got left behind in the AI chip boom</a></p>
+            </div>
+        </div>
+
+        <div class="blogu-madh2">
+            <div class="blogu-3">
+                <a href="https://indianexpress.com/article/technology/science/5-asteroid-flying-near-earth-october-26-27-28-9638228/" target="_blank"><img src="Asteroid-Pixabay.jpg" alt=""></a>
+                <p><a href="https://indianexpress.com/article/technology/science/5-asteroid-flying-near-earth-october-26-27-28-9638228/" target="_blank">5 asteroids, including one as big as a skyscraper, speeding toward Earth this weekend</a></p>
+            </div>
+            <div class="blogu-4">
+                <a href="https://indianexpress.com/article/technology/tech-news-technology/apples-q3-china-smartphone-sales-slip-huaweis-soar-9637863/" target="_blank"><img src="apple q3.jpg" alt=""></a>
+                <p><a href="https://indianexpress.com/article/technology/tech-news-technology/apples-q3-china-smartphone-sales-slip-huaweis-soar-9637863/" target="_blank"> Apple’s Q3 China smartphone sales slip, Huawei’s soar </a></p>
+            </div>
+        </div>
+        
+        <div class="blogu-madh2">
+            <div class="blogu-3">
+                <a href="https://indianexpress.com/article/technology/tech-news-technology/tesla-promises-paid-robotaxis-next-year-hurdles-remain-9637497/" target="_blank"><img src="tesla-sports.jpg" alt=""></a>
+                <p><a href="https://indianexpress.com/article/technology/tech-news-technology/tesla-promises-paid-robotaxis-next-year-hurdles-remain-9637497/" target="_blank">Tesla promises paid robotaxis next year, but significant hurdles remain</a></p>
+            </div>
+            <div class="blogu-4">
+                <a href="https://indianexpress.com/article/technology/science/satellite-just-exploded-in-space-9636172/" target="_blank"><img src="satellite1.jpg" alt=""></a>
+                <p><a href="https://indianexpress.com/article/technology/science/satellite-just-exploded-in-space-9636172/" target="_blank"> A satellite just exploded in space and nobody knows why </a></p>
+            </div>
+        </div>
+        
+        <hr>
+        <footer>
+            <div class="footerContainer">
+                <div class="socialIcons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://www.instagram.com/liskrassniqi/"><i class="fab fa-instagram"></i></a>
+                </div>
+
+                <div class="footerNav">
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="articles.html">Articles</a></li>
+                        <li><a href="aboutus.html">About Us</a></li>
+                        <li><a href="contactus.html">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        function showSidebar() {
+            document.querySelector('.sidebar').style.display = 'flex';
+        }
+
+        function hideSidebar() {
+            document.querySelector('.sidebar').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
